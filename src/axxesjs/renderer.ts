@@ -184,6 +184,9 @@ const processTemplateVariables = (template: string, component: Component): strin
  * @returns {string} The processed template with custom elements replaced by their rendered content.
  */
 const processCustomElements = (template: string, component: Component): string => {
+    // Reset the children array on the component
+    component.children = [];
+
     // Regular expression to identify custom HTML element tags in the template
     const regex = /<([a-zA-Z0-9-]+)(?:\s|>)/g;
 
