@@ -14,14 +14,12 @@ import {Component} from "./component";
  *                                  If not provided, the component is created but not appended to the DOM.
  */
 const render = (component: Component, parent?: HTMLElement) => {
-    // Call the beforeRender method to handle any necessary setup before rendering
-    component.beforeRender();
 
     // Create a new HTML element based on the component's tag name
-    let node: HTMLElement = document.createElement(component.tag);
+    //TODO: Exercise 1
 
     // Assign the created element to the component's node property
-    component.node = node;
+    //TODO: Exercise 1
 
     // Process any template/logic required for the component (assuming a helper function)
     processTemplate(component);
@@ -29,13 +27,7 @@ const render = (component: Component, parent?: HTMLElement) => {
     // If a parent HTMLElement is provided
     if (parent) {
         // Append the newly created component node to the parent
-        parent.appendChild(node);
-
-        // Call the afterRender method for the component
-        component.afterRender();
-
-        // Call the afterRender method for all the child components
-        component.children.forEach(child => child.afterRender());
+        //TODO: Exercise 1
     }
 }
 
@@ -43,11 +35,8 @@ const render = (component: Component, parent?: HTMLElement) => {
 const processTemplate = (component: Component): string =>  {
     let template = component.template;
     if (component?.node) {
-        template = processTemplateIfStatements(template, component);
-        template = processTemplateForLoops(template, component);
-        template = processTemplateVariables(template, component);
-        template = processCustomElements(template, component);
-        component.node.innerHTML = template;
+
+        //TODO: Exercise 2
     }
 
     return template;
@@ -129,10 +118,10 @@ const processTemplateIfStatements = (template: string, component: Component): st
         const conditionResult = new Function('data', `with(data) { return ${condition} }`)(component);
 
         // If the condition evaluates to true, include the content, otherwise exclude it
-        const replacement = conditionResult ? `<${tagName}>${content}</${tagName}>` : '';
+        //TODO: Exercise 5
 
         // Replace the '[if]' directive structure in the result with the determined content
-        result = result.replace(fullMatch, replacement);
+        //TODO: Exercise 5
     }
 
     return result;
@@ -165,7 +154,7 @@ const processTemplateVariables = (template: string, component: Component): strin
         const replacementValue = new Function('data', `with(data) { return ${variableName} }`)(component);
 
         // Replace the variable placeholder in the result with its actual value
-        result = result.replace(fullMatch, replacementValue);
+        //TODO: Exercise 3
     }
 
     return result;
@@ -204,16 +193,17 @@ const processCustomElements = (template: string, component: Component): string =
             const ChildComponentClass = ComponentRegistry[tagName];
 
             // Instantiate the child component
-            const childComponentInstance = new ChildComponentClass();
+            //TODO: Exercise 6
 
             // Render the child component
-            render(childComponentInstance);
+            //TODO: Exercise 6
 
             // Replace the custom element tag in the result with the child component's node's outerHTML content
-            result = result.replace(fullMatch, childComponentInstance.node.outerHTML);
+            //TODO: Exercise 6
 
             // Add the child component instance to the parent component's children array
-            component.children.push(childComponentInstance);
+            //TODO: Exercise 6
+
         }
     }
 

@@ -17,8 +17,8 @@ export class ParticipantComponent extends Component {
     router = new Router();
 
     beforeRender() {
-        this.participant = this.workshopService.getParticipant(this.router.routeParams.get('id'));
-        this.message = this.router.queryParams.get('message') || 'Hello'
+        //TODO: Exercise 13
+        //TODO Exercise 14
     }
 
     afterRender() {

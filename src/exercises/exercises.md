@@ -3,6 +3,7 @@
 ## Component
 
 ### Exercise 1:
+    - include the workshop.ts file in the index.html file.
     - Make sure the WorkshopComponent is rendered to the body of the document.
     - Take a look at the tag property of the Component class and the getElementName function.
     - Only make changes in the render function in renderer.ts
@@ -38,12 +39,13 @@
     - Make sure these functions are called at the correct time in renderer.ts.
     - The beforeRender function should set an interval that updates the time every second. Check your console to see if it works. (you can remove the console.log afterwards to stop it from spamming)
     - The afterRender function adds a participant. Check your console to see if it works
+    - Don't forget to call the afterRender functions of the child components.
 
 ## Data binding / Change Detection
 
 ### Exercise 8
     - We already can display data from the component in the template, but when we make changes (for example the time and the participants, it doesn't update the data in the dom.
-    - Make sure the data is updated in the dom when the data changes by updating the WatchProperties decorator function in observe.ts.
+    - Make sure the data is updated in the dom when the data changes by updating the ObservableComponent decorator function in observe.ts.
 
 ## State Management
 
@@ -56,12 +58,13 @@
 ### Exercise 10
     - However, we notice the list of participants is not updated when we add a participant.
     - This is because both components have a different instance of the WorkshopService.
-    - Update the Service decorator function so that it makes sure the WorkshopService is a singleton.
+    - add the Service decorator so that it makes sure the WorkshopService is a singleton.
     - When you now add a participant, it should immediately appear in the list.
 
 ## Routing
 
 ### Exercise 11
+    - Make the app start up through a router and make sure '/' redirects to the WorkshopComponent.
     - We want to be able to navigate to the content component by clicking the anchor element.
     - Update the Router class so that it can handle url changes.
     - Make sure the correct component is rendered when you navigate to the content route.
@@ -69,6 +72,7 @@
 ### Exercise 12
     - We want to be able to navigate back to the home component now.
     - The content component has a button that should navigate back to the home component. Update the navigate function in the router.
+    - Don't forget to update the url in the browser.
 
 ### Exercise 13
     - Now we want to be able to navigate to the participant component by clicking the anchor element.

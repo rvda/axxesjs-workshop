@@ -46,7 +46,7 @@ export class Router extends Component {
     /** Listens for changes in the current path and triggers route switching accordingly. */
     private listener() {
         this.routeServer.currentPath$.listen((path) => {
-            this.switchRoute(path);
+            //TODO: Exercise 11
         });
     }
 
@@ -65,9 +65,7 @@ export class Router extends Component {
                 if  (page instanceof Component) {
                     this.routeServer.routeParams.clear();
                     this.extractRouteParams(path, route.path);
-                    this.node?.childNodes.forEach((node) => node.remove());
-                    document.body.innerHTML = '';
-                    render(page, document.body);
+                    //TODO: Exercise 11
                 }
             }
         }
@@ -85,9 +83,7 @@ export class Router extends Component {
         if (pathParts.length === routeParts.length) {
             for (let i = 0; i < pathParts.length; i++) {
                 if (pathParts[i] !== routeParts[i]) {
-                    if (routeParts[i].startsWith(':')) {
-                        this.routeServer.routeParams.set(routeParts[i].substring(1), pathParts[i]);
-                    }
+                    //TODO: Exercise 13
                 }
             }
         }
@@ -118,12 +114,12 @@ export class Router extends Component {
 
     /** Getter for retrieving the query parameters of the current URL. */
     get queryParams(): URLSearchParams {
-        return new URLSearchParams(this.routeServer.location?.search);
+        //TODO: Exercise 14
     }
 
     /** Getter for retrieving the route parameters of the current URL. */
     get routeParams(): Map<string, string> {
-        return this.routeServer.routeParams;
+        //TODO: Exercise 13
     }
 
     /**
@@ -132,8 +128,7 @@ export class Router extends Component {
      * @param url - The URL to navigate to.
      */
     navigate(url: string) {
-        this.routeServer.history.pushState(null, null, url);
-        this.routeServer.currentPath$.value = url;
+        //TODO: Exercise 12
     }
 }
 

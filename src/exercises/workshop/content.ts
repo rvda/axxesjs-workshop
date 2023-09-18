@@ -15,8 +15,8 @@ export class ContentComponent extends Component {
 
     afterRender() {
         const button = document.body.querySelector('button');
-        button.addEventListener('click', () => {
-            this.router.navigate('/');
-        });
+        button.onclick = () => {
+            //TODO: Exercise 12
+        };
     }
 }

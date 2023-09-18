@@ -1,4 +1,4 @@
-import {Service, State} from "@axxesJS";
+import {State} from "@axxesJS";
 
 
 export type Participant = {
@@ -6,7 +6,7 @@ export type Participant = {
     firstName: string;
     lastName: string;
 }
-@Service
+//TODO: Exercise 10
 export class WorkshopService {
     participants = new State<Participant[]>([
         {

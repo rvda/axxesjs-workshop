@@ -1,4 +1,4 @@
-import {Component, ObservableComponent, Router} from "@axxesJS";
+import {Component, ObservableComponent, render, Router} from "@axxesJS";
 import {Participant, WorkshopService} from "./workshop.service";
 import {ParticipantComponent} from "./participant";
 import {ContentComponent} from "./content";
@@ -19,7 +19,23 @@ class WorkshopComponent extends Component {
     `;
 
     workshopService = new WorkshopService();
-    participants: Participant[] = [];
+    participants: Participant[] = [
+        {
+            id: '0',
+            firstName: 'Joske',
+            lastName: 'Vermeulen'
+        },
+        {
+            id: '1',
+            firstName: 'Jantje',
+            lastName: 'De Clerck'
+        },
+        {
+            id: '2',
+            firstName: 'Jefke',
+            lastName: 'Van de Velde'
+        }
+    ]
     showParticipants = true;
 
     date = this.getToday();
@@ -52,34 +68,14 @@ class WorkshopComponent extends Component {
     }
 
     afterRender() {
-/*        this.participants = [
+        this.participants = [
             ...this.participants,
             {
                 id: this.participants.length.toString(),
                 firstName: 'Gerard',
                 lastName: 'De Smidt'
             }];
-        console.log(this.participants);*/
     }
-
-
-    /*    participants: Participant[] = [
-        {
-            id: '0',
-            firstName: 'Joske',
-            lastName: 'Vermeulen'
-        },
-        {
-            id: '1',
-            firstName: 'Jantje',
-            lastName: 'De Clerck'
-        },
-        {
-            id: '2',
-            firstName: 'Jefke',
-            lastName: 'Van de Velde'
-        }
-        ]*/
 
 }
 
@@ -115,6 +111,5 @@ export class AddParticipantComponent extends Component {
     }
 }
 
-const router = new Router().withRouteComponent('/', WorkshopComponent);
-router.withRouteComponent('/content', ContentComponent);
-router.withRouteComponent('/:id', ParticipantComponent);
+render(new WorkshopComponent(), document.body);
+//TODO: Exercise 11: router

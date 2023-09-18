@@ -42,9 +42,7 @@ export class State<T> {
      */
     set value(value: T) {
         this._value = value;
-        this._listeners.forEach((listener) => {
-            listener(value);
-        });
+        //TODO: Exercise 9
     }
 
     /**
@@ -55,7 +53,7 @@ export class State<T> {
      */
     listen(listener: (v: T) => void) {
         if (this._listeners.indexOf(listener) === -1) {
-            this._listeners.push(listener);
+            //TODO: Exercise 9
         }
         listener(this._value);
     }

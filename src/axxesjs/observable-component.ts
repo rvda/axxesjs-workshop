@@ -22,7 +22,7 @@ export function ObservableComponent<T extends { new(...args: any[]): Component }
                 const result = Reflect.set(target, property, value);
                 // If the value has changed (and the property is not 'node'), trigger a re-render
                 if (property !== 'node' && value !== oldValue) {
-                    target.onUpdate();
+                    //TODO: Exercise 8
                 }
                 return result;
             }
