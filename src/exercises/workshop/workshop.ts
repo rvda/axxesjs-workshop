@@ -1,4 +1,4 @@
-import {Component, Router, ObservableComponent} from "@axxesJS";
+import {Component, ObservableComponent, Router} from "@axxesJS";
 import {Participant, WorkshopService} from "./workshop.service";
 import {ParticipantComponent} from "./participant";
 import {ContentComponent} from "./content";
@@ -52,14 +52,14 @@ class WorkshopComponent extends Component {
     }
 
     afterRender() {
-        this.participants = [
+/*        this.participants = [
             ...this.participants,
             {
                 id: this.participants.length.toString(),
                 firstName: 'Gerard',
                 lastName: 'De Smidt'
             }];
-        console.log(this.participants);
+        console.log(this.participants);*/
     }
 
 
@@ -87,25 +87,26 @@ class WorkshopComponent extends Component {
 export class AddParticipantComponent extends Component {
     template = `
         <h1>Add participant</h1>
-        <form id="addForm">
+        <div id="addForm">
             <label for="firstName">First name</label>
             <input type="text" id="firstName" name="firstName" required>
             <label for="lastName">Last name</label>
             <input type="text" id="lastName" name="lastName" required>
-            <button type="submit">Add</button>
-        </form>
+            <button>Add</button>
+        </div>
     `;
 
     workshopService = new WorkshopService();
 
     afterRender() {
         const form = document.body.querySelector('#addForm');
-        form.addEventListener('submit', (event) => {
+        const button = form.querySelector('button');
+        button.onclick = (event) => {
             event.preventDefault();
             const firstName = form.querySelector('#firstName').value;
             const lastName = form.querySelector('#lastName').value;
             this.addParticipant(firstName, lastName);
-        });
+        };
     }
 
     addParticipant(firstName: string, lastName: string) {
